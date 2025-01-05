@@ -32,8 +32,8 @@ class stockInfo {
 
 public class myStock {
 	/* 
-	 * TODO: declare the data structures used for the database HERE.
-	 * HINT: use two data structures to store two copies of the stock information.
+	 * Declared the data structures used for the database HERE.
+	 * Used two data structures to store two copies of the stock information.
 	 * One for O(1) retrieval, the other is used to get top K stocks in O(K) time.
 	 * HashMap<String, stockInfo> and TreeSet<Map.Entry<String, stockInfo>> are recommended.
 	 * The entries are not sorted in HashMap, but they are sorted in TreeSet.
@@ -43,11 +43,10 @@ public class myStock {
 	
 	public myStock() throws IOException{
 		/* 
-		 * TODO: implement the constructor to initialize the data structures HERE.
-		 * HINT: to let the stocks be sorted by the price in TreeSet data structure 
-		 * the compare method need to be overridden. Below is a sample for how it can be done.
-		 * https://www.java2novice.com/java-collections-and-util/treeset/comparator-object/ 
-		 */
+		 * Implemented the constructor to initialize the data structures HERE.
+		 * The stocks are sorted by the price in TreeSet data structure 
+		 * and the compare method was overridden.
+   		*/
 		stockMap = new HashMap<>();
 		Comparator<Map.Entry<String, stockInfo>> comparator = new Comparator<Map.Entry<String, stockInfo>>() {
 		@Override
@@ -64,12 +63,10 @@ public class myStock {
 
 	public void insertOrUpdate(String symbol, stockInfo stock) {
 		/* 
-		 * TODO: implement this method to insert or update the records
-		 * Make sure it can be done within O(log(n)) time.
-		 * Make sure multiple copies are inserted or updated.
-		 * Make sure there aren't records with duplicate symbol
-		 * Below links shows how to creat Map.Entry obj which can be inserted to TreeSet<Map.Entry<String, stockInfo>>
-		 * https://www.baeldung.com/java-map-new-entry
+		 * Implemented this method to insert or update the records
+		 * Made sure it could be done within O(log(n)) time.
+		 * Made sure multiple copies were inserted or updated.
+		 * Made sure there were no records with duplicate symbol
 		 */
 		//stocksTree.remove(Map.entry(symbol, stockMap.get(symbol)));
 		stockMap.put(symbol, stock);
@@ -78,19 +75,15 @@ public class myStock {
 
 	public stockInfo get(String symbol) {
 		/* 
-		 * TODO: implement this method to retrive record from database in O(1) time
+		 * Implemented this method to retrive record from database in O(1) time
 		 */
 		return stockMap.get(symbol);
 	}
 
 	public List<Map.Entry<String, stockInfo>> top(int k) {
 		/* 
-		 * TODO: implement this method to return the stock records with top k prices in O(k) time
-		 * HINT: use iterator to retrive items in the sorted order from a data structure
-		 * If you use TreeSet, the Iterator can be created like:
-		 * TreeSet<Map.Entry<String, stockInfo>> set = new TreeSet<Map.Entry<String, stockInfo>>;
-		 * Iterator<Map.Entry<String, stockInfo>> setIterator = set.iterator();
-		 * see more info from https://www.geeksforgeeks.org/treeset-iterator-method-in-java/
+		 * Implemented this method to return the stock records with top k prices in O(k) time
+		 * Used iterator to retrive items in the sorted order from a data structure
 		 */
 		List<Map.Entry<String, stockInfo>> topStocks = new ArrayList<>();
 		Iterator<Map.Entry<String, stockInfo>> iterator = stocksTree.iterator();
